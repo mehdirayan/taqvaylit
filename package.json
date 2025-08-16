@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "taqvaylit",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
     "postinstall": "nuxt prepare",
     "ionic:build": "npx nuxi generate && npx cap sync",
     "ionic:serve": "npx serve dist",
-    "ionic:run": "npx cap run android "
+    "ionic:run": "npx cap run android ",
+    "ionic:android": "npx cap open android"
   },
   "dependencies": {
     "@capacitor/android": "7.4.2",

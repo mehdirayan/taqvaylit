@@ -38,7 +38,7 @@
       <div class="">
         <ion-radio-group @ion-change="handleChange($event)">
           <div class="flex flex-row flex-wrap justify-center mt-5 gap-4">
-            <div v-for="item in shuffledExercises[currentExercise]?.choice" class="basis-1/3 text-center">
+            <div v-for="item in shuffledExercises[currentExercise]?.choice" class="">
               <ion-radio :value="item" label-placement="stacked" alignment="center" class="text-5xl"
                 :disabled="!isOnline">{{ item }}
               </ion-radio>
@@ -46,7 +46,7 @@
           </div>
         </ion-radio-group>
       </div>
-      <div class="m-5">
+      <div class="m-5 pb-16">
         <ion-button expand="block" :disabled="buttonDisabled || !isOnline" @click="checkResponse">ابعت</ion-button>
       </div>
       <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="falseModalCanDissmiss"
@@ -59,7 +59,7 @@
             <h1 class="text-right">ما جبتهاش. ماعليش</h1>
             <h1 class="text-right">لازم تعاود مالول</h1>
           </div>
-          <div class="my-8 mx-5" id="failButton">
+          <div class="my-8 mx-5 pb-16" >
             <ion-button expand="block" @click="falseGoOn">كمل</ion-button>
           </div>
         </div>
@@ -76,7 +76,7 @@
               {{ shuffledExercises[currentExercise]?.meaning }}
             </h1>
           </div>
-          <div class="my-8 mx-5" id="failButton">
+          <div class="my-8 mx-5 pb-16" >
             <ion-button :disabled="isPlaying || !isOnline" expand="block" @click="trueGoOn">كمل</ion-button>
           </div>
         </div>
