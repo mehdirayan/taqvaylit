@@ -1383,9 +1383,6 @@ Y1uPU7g9N1ZWVlacSn//2Q==
   </ion-page>
 </template>
 
-<script setup lang="ts">
-
-</script>
 
 
 <style scoped>

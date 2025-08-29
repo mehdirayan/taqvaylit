@@ -7,10 +7,8 @@
     </ion-header>
     <ion-content :fullscreen="true" class="ion-padding">
       <transition name="fade">
-        <div
-          v-if="showSuccessAnimation"
-          class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center"
-        >
+        <div v-if="showSuccessAnimation"
+          class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center">
           <div class="text-center">
             <h1 class="text-5xl font-bold text-green-800 mb-4">
               🎉 مبروك! راك جبتها 20/20 🎉
@@ -22,12 +20,8 @@
           </div>
         </div>
       </transition>
-      <ion-title class="text-center">{{ score }}/20</ion-title>
-      <ion-progress-bar
-        :value="progress"
-        slot="fixed"
-        color="success"
-      ></ion-progress-bar>
+      <ion-title class="text-center">{{ score }}/{{ shuffledExercises.length }}</ion-title>
+      <ion-progress-bar :value="progress" slot="fixed" color="success"></ion-progress-bar>
       <div v-if="!isOnline" class="bg-red-100 text-red-600 text-center p-2">
         ⚠️ ماركش مكونكتي لنترنات
       </div>
@@ -38,8 +32,7 @@
         <ion-img :src="imgSrc"></ion-img>
       </div>
       <div class="text-center m-5 text-3xl">
-        <span
-          >{{ shuffledExercises[currentExercise]?.startWord }}
+        <span>{{ shuffledExercises[currentExercise]?.startWord }}
           {{ displayedResponse }}
         </span>
       </div>
@@ -47,40 +40,22 @@
       <div class="">
         <ion-radio-group @ion-change="handleChange($event)">
           <div class="flex flex-row flex-wrap justify-center mt-5 gap-4">
-            <div
-              v-for="item in shuffledExercises[currentExercise]?.choice"
-              class=""
-            >
-              <ion-radio
-                :value="item"
-                label-placement="stacked"
-                alignment="center"
-                class="text-5xl"
-                :disabled="!isOnline"
-                >{{ item }}
+            <div v-for="item in shuffledExercises[currentExercise]?.choice" class="">
+              <ion-radio :value="item" label-placement="stacked" alignment="center" class="text-5xl"
+                :disabled="!isOnline">{{ item }}
               </ion-radio>
             </div>
           </div>
         </ion-radio-group>
       </div>
       <div class="m-5 pb-16">
-        <ion-button
-          expand="block"
-          :disabled="buttonDisabled || !isOnline"
-          @click="checkResponse"
-          >ابعت</ion-button
-        >
+        <ion-button expand="block" :disabled="buttonDisabled || !isOnline" @click="checkResponse">ابعت</ion-button>
       </div>
-      <ion-modal
-        :initial-breakpoint="1"
-        :breakpoints="[0, 1]"
-        :can-dismiss="falseModalCanDissmiss"
-        :isOpen="falseModalIsOpen"
-        @didDismiss="
+      <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="falseModalCanDissmiss"
+        :isOpen="falseModalIsOpen" @didDismiss="
           falseModalIsOpen = false;
-          falseModalCanDissmiss = false;
-        "
-      >
+        falseModalCanDissmiss = false;
+        ">
         <div class="bg-yellow-500">
           <div class="flex flex-col justify-end mx-4 my-10 text-red-600">
             <h1 class="text-right">ما جبتهاش. ماعليش</h1>
@@ -91,16 +66,11 @@
           </div>
         </div>
       </ion-modal>
-      <ion-modal
-        :initial-breakpoint="1"
-        :breakpoints="[0, 1]"
-        :can-dismiss="trueModalCanDissmiss"
-        :isOpen="trueModalIsOpen"
-        @didDismiss="
+      <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="trueModalCanDissmiss"
+        :isOpen="trueModalIsOpen" @didDismiss="
           trueModalIsOpen = false;
-          trueModalCanDissmiss = false;
-        "
-      >
+        trueModalCanDissmiss = false;
+        ">
         <div class="bg-lime-300">
           <div class="flex flex-col mx-4 my-10 text-green-600">
             <h1 class="text-center">مليحا كمل هاڨدا</h1>
@@ -109,30 +79,21 @@
             </h1>
           </div>
           <div class="my-8 mx-5 pb-16">
-            <ion-button
-              :disabled="isPlaying || !isOnline"
-              expand="block"
-              @click="trueGoOn"
-              >كمل</ion-button
-            >
+            <ion-button :disabled="isPlaying || !isOnline" expand="block" @click="trueGoOn">كمل</ion-button>
           </div>
         </div>
       </ion-modal>
     </ion-content>
-    <audio
-      ref="audioRef"
-      :src="audioUrl"
-      preload="auto"
-      @canplaythrough="onCanPlayThrough"
-      @ended="onEnded"
-      @loadstart="onLoadStart"
-    >
+    <audio ref="audioRef" :src="audioUrl" preload="auto" @canplaythrough="onCanPlayThrough" @ended="onEnded"
+      @loadstart="onLoadStart">
       Your browser does not support the audio element.
     </audio>
+      <canvas id="my-canvas"></canvas>
   </ion-page>
 </template>
 <script setup lang="ts">
 import { Network } from "@capacitor/network";
+import ConfettiGenerator from "confetti-js";
 
 const apiBase = useRuntimeConfig().public.apiBase;
 
@@ -146,7 +107,6 @@ let isPlaying = ref(false);
 
 const isOnline = ref(true);
 
-const showSuccessAnimation = ref(false);
 const score = ref(0);
 
 let response = "";
@@ -160,6 +120,19 @@ const falseModalIsOpen = ref(false);
 const trueModalIsOpen = ref(false);
 
 const displayedResponse = ref("______  ");
+
+
+const showSuccessAnimation = ref(false);
+
+watch(showSuccessAnimation, () => {
+    if (showSuccessAnimation.value) {
+        var confettiSettings = { target: 'my-canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
+        // Launch confetti when modal opens
+
+    }
+});
 
 watch(score, (newScore) => {
   if (newScore === shuffledExercises.value.length) {
@@ -191,9 +164,8 @@ const reloadImageFlag = ref(false);
 const imgSrc = computed(() => {
   const image = shuffledExercises.value[currentExercise.value]?.image;
   console.log("Current exercise image:", image);
-  return `${apiBase}/public/1/1.1/images/${image}?v=${
-    reloadImageFlag.value ? Date.now() : ""
-  }`;
+  return `${apiBase}/public/1/1.1/images/${image}?v=${reloadImageFlag.value ? Date.now() : ""
+    }`;
 });
 
 const exercise = [
@@ -774,12 +746,15 @@ const checkResponse = async () => {
   if (
     response ===
     shuffledExercises.value[currentExercise.value]?.choice[
-      shuffledExercises.value[currentExercise.value]?.trueResponse || 0
+    shuffledExercises.value[currentExercise.value]?.trueResponse || 0
     ]
   ) {
     displayedResponse.value = response;
     trueModalIsOpen.value = true;
-    await playSuccess();
+    await playSuccess().catch((err) => {
+      console.error("Failed to play success sound:", err);
+      isPlaying.value = false;
+    });
 
     if (current.sound) {
       playSound(current.sound).catch((err) => {
@@ -797,12 +772,14 @@ const checkResponse = async () => {
 };
 
 const trueGoOn = () => {
-  score.value++;
-  progress.value = progress.value + +1 / shuffledExercises.value.length;
-
+  if (score.value < shuffledExercises.value.length) {
+    score.value++;
+    progress.value = progress.value + 1 / shuffledExercises.value.length;
+    currentExercise.value++;
+  }
   trueModalCanDissmiss.value = true;
   trueModalIsOpen.value = false;
-  currentExercise.value++;
+  
   buttonDisabled.value = true;
 };
 
