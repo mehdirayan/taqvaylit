@@ -1,0 +1,109 @@
+{
+  "______  ":"______  ",
+  "title": "Ad ḥafḍaɣ taqbaylit",
+  "start": "Abdu",
+  "startMessage": "Click ici pour commencer",
+  "connectionError": "Pas connecté à Internet",
+  "welcome": {
+    "soonMessage": "Bientôt disponible",
+    "1": { "title": "kra n w awalen", "traduction": "Quelques Mots" },
+    "2": { "title": "Sel mliḥ", "traduction": "Ecoutez bien" }
+  },
+  "exercise1_1": {
+    "title": "Vocabulaire",
+    "question": "Choisissez le mot qui correspond à l'image",
+    "ok": "Envoyer",
+    "questions": {
+      "q1": {
+        "choice": ["Amcic", "Eṭṭejr", "Eṭṭabla"],
+        "meaning":"Ceci est une table"
+
+      },
+      "q2": {
+        "choice": ["Elkas", "Axxam", "Aɛudiw"],
+        "meaning": "Ceci est un verre"
+      },
+      "q3": {
+        "choice": ["Adrar", "Akersi", "Amen"],
+        "meaning":  "Ceci est une chaise"
+      },
+      "q4": {
+        "choice": ["Igeni", "Lebḥar", "Afenjal"],
+        "meaning":  "Ceci est une tasse"
+      },
+      "q5": {
+        "choice": ["Tafarcit", "Abeḥri", "Abṛid"],
+        "meaning": "Ceci est une fourchette"
+      },
+      "q6": {
+        "choice": ["Taɛebut", "Aserwal", "Taɣenjawt"],
+        "meaning": "Ceci est une cuillère"
+      },
+      "q7": {
+        "choice": ["Elmus", "Laḥcic", "tayaẓiṭ"],
+        "meaning":  "Ceci est un couteau"
+      },
+      "q8": {
+        "choice": ["Elɣaba", "Aqjun", "Taḍebsitt"],
+        "meaning":  "Ceci est une assiette"
+      },
+      "q9": {
+        "choice": ["taqerɛet", "Ikkeri", "Takkerust"],
+        "meaning": "Ceci est une bouteille"
+      },
+      "q10": {
+        "choice": ["Itri", "Usu", "Assebaḍ"],
+        "meaning":  "Ceci est un lit"
+      },
+      "q11": {
+        "choice": ["Taburt", "Azniq", "Edruj"],
+        "meaning": "Ceci est une porte"
+      },
+      "q12": {
+        "choice": ["Adfel", "Agur", "Eṭṭaq"],
+        "meaning": "Ceci est une fenêtre"
+      },
+      "q13": {
+        "choice": ["Ezzit", "Aɣrum", "Etilifun"],
+        "meaning":  "Ceci est un téléphone"
+      },
+      "q14": {
+        "choice": ["Elḥiḍ", "Adrar", "Amarci"],
+        "meaning": "Ceci est une montagne"
+      },
+      "q15": {
+        "choice": ["Astilu", "Taddert", "Etrisiti"],
+        "meaning":  "Ceci est un stylo"
+      },
+      "q16": {
+        "choice": ["Elgez", "Azemmur", "Tawerqet"],
+        "meaning": "Ceci sont des olives"
+      },
+      "q17": {
+        "choice": ["Esbitar", "Asqif", "Elqahwa"],
+        "meaning": "Ceci est un hôpital"
+      },
+      "q18": {
+        "choice": ["Kaskrut", "Tamurt", "Ellakul"],
+        "meaning": "Ceci est une école"
+      },
+      "q19": {
+        "choice": ["Lifrit", "Anner", "Elmizen"],
+        "meaning":  "Ceci est un stade"
+      },
+      "q20": {
+        "choice": ["Tamacint", "Azger", "Elɛid"],
+        "meaning":  "Ceci est un train"
+      }
+    },
+    "startWordF": "Taɣi t",
+    "startWordFM": "Taɣi d",
+    "startWordM": "Wagi d",
+    "successMessage":"Super, continuez",
+    "finalSuccessMessage1":"filicitations! vous avez eu 20/20",
+    "finalSuccessMessage2":"Vous avez appris 20 mots kabyles",
+    "continue":"Continuez",
+    "failMessage1":"Vous ne l'avez pas eu. Ce n'est pas grave",
+    "failMessage2":"Vous devez recommencer depuis le début"
+  }
+}

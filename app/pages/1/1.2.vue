@@ -3,7 +3,6 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title class="text-center">Listening</ion-title>
-
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true" class="ion-padding">
@@ -21,7 +20,7 @@
             <ion-title class="text-center">{{ score }}/{{ shuffledExercises.length }}</ion-title>
             <ion-progress-bar :value="progress" slot="fixed" color="success"></ion-progress-bar>
             <div v-if="!isOnline" class="bg-red-100 text-red-600 text-center p-2">
-                ⚠️ ماركش مكونكتي لنترنات
+                ⚠️ {{ t("connectionError") }}
             </div>
             <div class="text-center text-gray-700">
                 <h1>"اسمع ؤ خير الكلمات"</h1>
@@ -110,6 +109,12 @@
 <script setup lang="ts">
 import { Network } from "@capacitor/network";
 import ConfettiGenerator from "confetti-js";
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+
+
 //----------- confetiei --------------
 
 const showSuccessAnimation = ref(false);

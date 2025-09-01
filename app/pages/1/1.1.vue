@@ -2,98 +2,161 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="text-center">Quizz</ion-title>
+        <ion-title class="text-center">{{ t("exercise1_1.title") }}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" class="ion-padding">
       <transition name="fade">
-        <div v-if="showSuccessAnimation"
-          class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center">
+        <div
+          v-if="showSuccessAnimation"
+          class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center"
+        >
           <div class="text-center">
             <h1 class="text-5xl font-bold text-green-800 mb-4">
-              🎉 مبروك! راك جبتها 20/20 🎉
+              🎉 {{ t("exercise1_1.finalSuccessMessage1") }}🎉
             </h1>
             <h1 class="text-5xl font-bold text-green-800 mb-4">
-              🎉 راك تعلمت 20 كلمة قبيلية 🎉
+              🎉{{ t("exercise1_1.finalSuccessMessage2") }}🎉
             </h1>
             <ion-button expand="block" @click="goOn">كمل</ion-button>
           </div>
         </div>
       </transition>
-      <ion-title class="text-center">{{ score }}/{{ shuffledExercises.length }}</ion-title>
-      <ion-progress-bar :value="progress" slot="fixed" color="success"></ion-progress-bar>
+      <ion-title class="text-center"
+        >{{ score }}/{{ shuffledExercises.length }}</ion-title
+      >
+      <ion-progress-bar
+        :value="progress"
+        slot="fixed"
+        color="success"
+      ></ion-progress-bar>
       <div v-if="!isOnline" class="bg-red-100 text-red-600 text-center p-2">
-        ⚠️ ماركش مكونكتي لنترنات
+        ⚠️ {{ t("connectionError") }}
       </div>
       <div class="text-center text-gray-700">
-        <h1>خير الكلمة الي توالم التصويرة</h1>
+        <h1>{{ t("exercise1_1.question") }}</h1>
       </div>
       <div class="flex justify-center mt-10">
         <ion-img :src="imgSrc"></ion-img>
       </div>
       <div class="text-center m-5 text-3xl">
-        <span>{{ shuffledExercises[currentExercise]?.startWord }}
-          {{ displayedResponse }}
+        <span>
+          {{
+            shuffledExercises[currentExercise]?.startWord
+              ? t(shuffledExercises[currentExercise].startWord.toString())
+              : ""
+          }}
+          {{ t(displayedResponse) }}
         </span>
       </div>
 
       <div class="">
         <ion-radio-group @ion-change="handleChange($event)">
           <div class="flex flex-row flex-wrap justify-center mt-5 gap-4">
-            <div v-for="item in shuffledExercises[currentExercise]?.choice" class="">
-              <ion-radio :value="item" label-placement="stacked" alignment="center" class="text-5xl"
-                :disabled="!isOnline">{{ item }}
+            <div
+              v-for="item in shuffledExercises[currentExercise]?.choice"
+              class=""
+            >
+              <ion-radio
+                :value="item"
+                label-placement="stacked"
+                alignment="center"
+                :class="[
+                  locale === 'dz' ? 'text-5xl' : 'text-3xl font-semibold',
+                ]"
+                :disabled="!isOnline"
+                >{{ t(item) }}
               </ion-radio>
             </div>
           </div>
         </ion-radio-group>
       </div>
       <div class="m-5 pb-16">
-        <ion-button expand="block" :disabled="buttonDisabled || !isOnline" @click="checkResponse">ابعت</ion-button>
+        <ion-button
+          expand="block"
+          :disabled="buttonDisabled || !isOnline"
+          @click="checkResponse"
+          >{{ t("exercise1_1.ok") }}</ion-button
+        >
       </div>
-      <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="falseModalCanDissmiss"
-        :isOpen="falseModalIsOpen" @didDismiss="
+      <ion-modal
+        :initial-breakpoint="1"
+        :breakpoints="[0, 1]"
+        :can-dismiss="falseModalCanDissmiss"
+        :isOpen="falseModalIsOpen"
+        @didDismiss="
           falseModalIsOpen = false;
-        falseModalCanDissmiss = false;
-        ">
+          falseModalCanDissmiss = false;
+        "
+      >
         <div class="bg-yellow-500">
           <div class="flex flex-col justify-end mx-4 my-10 text-red-600">
-            <h1 class="text-right">ما جبتهاش. ماعليش</h1>
-            <h1 class="text-right">لازم تعاود مالول</h1>
-          </div>
-          <div class="my-8 mx-5 pb-16">
-            <ion-button expand="block" @click="falseGoOn">كمل</ion-button>
-          </div>
-        </div>
-      </ion-modal>
-      <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="trueModalCanDissmiss"
-        :isOpen="trueModalIsOpen" @didDismiss="
-          trueModalIsOpen = false;
-        trueModalCanDissmiss = false;
-        ">
-        <div class="bg-lime-300">
-          <div class="flex flex-col mx-4 my-10 text-green-600">
-            <h1 class="text-center">مليحا كمل هاڨدا</h1>
-            <h1 class="text-right text-red-400">
-              {{ shuffledExercises[currentExercise]?.meaning }}
+            <h1 :class="[locale === 'dz' ? 'text-right' : 'text-left']">
+              {{ t("exercise1_1.failMessage1") }}
+            </h1>
+            <h1 :class="[locale === 'dz' ? 'text-right' : 'text-left']">
+              {{ t("exercise1_1.failMessage2") }}
             </h1>
           </div>
           <div class="my-8 mx-5 pb-16">
-            <ion-button :disabled="isPlaying || !isOnline" expand="block" @click="trueGoOn">كمل</ion-button>
+            <ion-button expand="block" @click="falseGoOn">{{
+              t("exercise1_1.continue")
+            }}</ion-button>
+          </div>
+        </div>
+      </ion-modal>
+      <ion-modal
+        :initial-breakpoint="1"
+        :breakpoints="[0, 1]"
+        :can-dismiss="trueModalCanDissmiss"
+        :isOpen="trueModalIsOpen"
+        @didDismiss="
+          trueModalIsOpen = false;
+          trueModalCanDissmiss = false;
+        "
+      >
+        <div class="bg-lime-300">
+          <div class="flex flex-col mx-4 my-10 text-green-600">
+            <h1 class="text-center">{{ t("exercise1_1.successMessage") }}</h1>
+            <h1
+              :class="[
+                locale === 'dz' ? 'text-right' : 'text-left',
+                'text-red-400',
+              ]"
+            >
+              {{ t(shuffledExercises[currentExercise]?.meaning) }}
+            </h1>
+          </div>
+          <div class="my-8 mx-5 pb-16">
+            <ion-button
+              :disabled="isPlaying || !isOnline"
+              expand="block"
+              @click="trueGoOn"
+              >{{ t("exercise1_1.continue") }}</ion-button
+            >
           </div>
         </div>
       </ion-modal>
     </ion-content>
-    <audio ref="audioRef" :src="audioUrl" preload="auto" @canplaythrough="onCanPlayThrough" @ended="onEnded"
-      @loadstart="onLoadStart">
+    <audio
+      ref="audioRef"
+      :src="audioUrl"
+      preload="auto"
+      @canplaythrough="onCanPlayThrough"
+      @ended="onEnded"
+      @loadstart="onLoadStart"
+    >
       Your browser does not support the audio element.
     </audio>
-      <canvas id="my-canvas"></canvas>
+    <canvas id="my-canvas"></canvas>
   </ion-page>
 </template>
 <script setup lang="ts">
 import { Network } from "@capacitor/network";
 import ConfettiGenerator from "confetti-js";
+import { useI18n } from "vue-i18n";
+
+const { t, locale } = useI18n();
 
 const apiBase = useRuntimeConfig().public.apiBase;
 
@@ -121,17 +184,24 @@ const trueModalIsOpen = ref(false);
 
 const displayedResponse = ref("______  ");
 
-
 const showSuccessAnimation = ref(false);
 
-watch(showSuccessAnimation, () => {
-    if (showSuccessAnimation.value) {
-        var confettiSettings = { target: 'my-canvas' };
-        var confetti = new ConfettiGenerator(confettiSettings);
-        confetti.render();
-        // Launch confetti when modal opens
+let confetti = null;
 
+watch(showSuccessAnimation, (newVal) => {
+  if (newVal) {
+    const confettiSettings = { target: "my-canvas" };
+    confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+  } else {
+    // Stop immediately when modal closes
+    if (confetti) {
+      confetti.clear();
+      const canvas = document.getElementById("my-canvas");
+      if (canvas) canvas.style.display = "none"; // hide instead of remove
+      confetti = null;
     }
+  }
 });
 
 watch(score, (newScore) => {
@@ -163,176 +233,257 @@ const reloadImageFlag = ref(false);
 
 const imgSrc = computed(() => {
   const image = shuffledExercises.value[currentExercise.value]?.image;
-  console.log("Current exercise image:", image);
-  return `${apiBase}/public/1/1.1/images/${image}?v=${reloadImageFlag.value ? Date.now() : ""
-    }`;
+
+  return `${apiBase}/public/1/1.1/images/${image}?v=${
+    reloadImageFlag.value ? Date.now() : ""
+  }`;
 });
 
 const exercise = [
   {
     image: "table.png",
-    choice: ["اَمْشِشْ", "أَطَّجْرَ", "أَطَّبْلَ"],
+    choice: [
+      "exercise1_1.questions.q1.choice[0]",
+      "exercise1_1.questions.q1.choice[1]",
+      "exercise1_1.questions.q1.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "ثَڨِ ذْ",
-    meaning: "هادي طابلا",
+    startWord: "exercise1_1.startWordFM",
+    meaning: "exercise1_1.questions.q1.meaning",
     sound: "tabla_long",
   },
   {
     image: "verre.png",
-    choice: ["أَلْكَسْ", "أَخَمْ", "أَعُذِوْ"],
+    choice: [
+      "exercise1_1.questions.q2.choice[0]",
+      "exercise1_1.questions.q2.choice[1]",
+      "exercise1_1.questions.q2.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا كاس",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q2.meaning",
     sound: "elkass_long",
   },
 
   {
     image: "chair.png",
-    choice: ["أَذْرَرْ", "أَكُرْسِ", "أَمَنْ"],
+    choice: [
+      "exercise1_1.questions.q3.choice[0]",
+      "exercise1_1.questions.q3.choice[1]",
+      "exercise1_1.questions.q3.choice[2]",
+    ],
     trueResponse: 1,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا كرسي",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q3.meaning",
     sound: "akersi_long",
   },
   {
     image: "cup.png",
-    choice: ["إِڨَّنِ", "لَبْحَرْ", "أَفَنْجَلْ"],
+    choice: [
+      "exercise1_1.questions.q4.choice[0]",
+      "exercise1_1.questions.q4.choice[1]",
+      "exercise1_1.questions.q4.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا فنجال",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q4.meaning",
     sound: "afenjal_long",
   },
   {
     image: "fork.png",
-    choice: ["ثَفَرْشِطْ", "أَبَحْرِ", "أَبْرِذْ"],
+    choice: [
+      "exercise1_1.questions.q5.choice[0]",
+      "exercise1_1.questions.q5.choice[1]",
+      "exercise1_1.questions.q5.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادي فرشيطا",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q5.meaning",
     sound: "tafercit_long",
   },
   {
     image: "spoon.png",
-    choice: ["ثَعَّبُطْ", "أَسَرْوَلْ", "ثَغَنْجَوْثْ"],
+    choice: [
+      "exercise1_1.questions.q6.choice[0]",
+      "exercise1_1.questions.q6.choice[1]",
+      "exercise1_1.questions.q6.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادي مغرفا",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q6.meaning",
     sound: "tagenjaut_long",
   },
   {
     image: "knife.png",
-    choice: ["أَلْمُسْ", "لَحْشِشْ", "ثَيَزِطْ"],
+    choice: [
+      "exercise1_1.questions.q7.choice[0]",
+      "exercise1_1.questions.q7.choice[1]",
+      "exercise1_1.questions.q7.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا موس",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q7.meaning",
     sound: "elmus_long",
   },
   {
     image: "plate.png",
-    choice: ["أَلْغَبَ", "أَقْجُنْ", "ثَضَّبْسِتّْ"],
+    choice: [
+      "exercise1_1.questions.q8.choice[0]",
+      "exercise1_1.questions.q8.choice[1]",
+      "exercise1_1.questions.q8.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادا طبسي",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q8.meaning",
     sound: "tadebsit_long",
   },
   {
     image: "bottle.png",
-    choice: ["ثَقَرْعَتّْ", "إِكَّرِ", "ثَكَّرُسْثْ"],
+    choice: [
+      "exercise1_1.questions.q9.choice[0]",
+      "exercise1_1.questions.q9.choice[1]",
+      "exercise1_1.questions.q9.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادي قرعا",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q9.meaning",
     sound: "taqeraat_long",
   },
   {
     image: "bed.png",
-    choice: ["إِثْرِ", "أُسُ", "أَسَّبَضْ"],
+    choice: [
+      "exercise1_1.questions.q10.choice[0]",
+      "exercise1_1.questions.q10.choice[1]",
+      "exercise1_1.questions.q10.choice[2]",
+    ],
     trueResponse: 1,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا فراش",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q10.meaning",
     sound: "usu_long",
   },
   {
     image: "door.png",
-    choice: ["ثَبُرْثْ", "أَزْنِقْ", "أَدْرُجْ"],
+    choice: [
+      "exercise1_1.questions.q11.choice[0]",
+      "exercise1_1.questions.q11.choice[1]",
+      "exercise1_1.questions.q11.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادي باب",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q11.meaning",
     sound: "taburt_long",
   },
   {
     image: "window.png",
-    choice: ["أَذْفَلْ", "أَڨُرْ", "أَطَّقْ"],
+    choice: [
+      "exercise1_1.questions.q12.choice[0]",
+      "exercise1_1.questions.q12.choice[1]",
+      "exercise1_1.questions.q12.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "وَڨِ ذْ",
-    meaning: " هادي تاقا",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q12.meaning",
     sound: "etaq_long",
   },
   {
     image: "phone.png",
-    choice: ["أَزِّثْ", "أَغْرُمْ", "أَتِّلِفُنْ"],
+    choice: [
+      "exercise1_1.questions.q13.choice[0]",
+      "exercise1_1.questions.q13.choice[1]",
+      "exercise1_1.questions.q13.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا تيليفون",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q13.meaning",
     sound: "tilifun_long",
   },
 
   {
     image: "mountain.png",
-    choice: ["أَلْحِضْ", "أَذْرَرْ", "أَمَرْشِ"],
+    choice: [
+      "exercise1_1.questions.q14.choice[0]",
+      "exercise1_1.questions.q14.choice[1]",
+      "exercise1_1.questions.q14.choice[2]",
+    ],
     trueResponse: 1,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا جبل",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q14.meaning",
     sound: "adrar_long",
   },
 
   {
     image: "pen.png",
-    choice: ["أَسْتِلُ", "ثَدَّرْثْ", "أَتْرِسِتِ"],
+    choice: [
+      "exercise1_1.questions.q15.choice[0]",
+      "exercise1_1.questions.q15.choice[1]",
+      "exercise1_1.questions.q15.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا ستيلو",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q15.meaning",
     sound: "astilu_long",
   },
 
   {
     image: "olive.png",
-    choice: ["أَلْڨَزْ", "أَزُمُرْ", "ثَوَرْقَتّْ"],
+    choice: [
+      "exercise1_1.questions.q16.choice[0]",
+      "exercise1_1.questions.q16.choice[1]",
+      "exercise1_1.questions.q16.choice[2]",
+    ],
     trueResponse: 1,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا زيتون",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q16.meaning",
     sound: "azemur_long",
   },
 
   {
     image: "hospital.png",
-    choice: ["أَسْبِتَرْ", "أَسْقِفْ", "أَلْقَهْوَ"],
+    choice: [
+      "exercise1_1.questions.q17.choice[0]",
+      "exercise1_1.questions.q17.choice[1]",
+      "exercise1_1.questions.q17.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا سبيطار",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q17.meaning",
     sound: "sbitar_long",
   },
 
   {
     image: "school.png",
-    choice: ["كَسْكْرُطْ", "ثَمُرْثْ", "أَلَّكُلْ"],
+    choice: [
+      "exercise1_1.questions.q18.choice[0]",
+      "exercise1_1.questions.q18.choice[1]",
+      "exercise1_1.questions.q18.choice[2]",
+    ],
     trueResponse: 2,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا ليكول",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q18.meaning",
     sound: "elakul_long",
   },
   {
     image: "stadium.png",
-    choice: ["لِفْرِتْ", "أَنَّرْ", "أَلْمِزَنْ"],
+    choice: [
+      "exercise1_1.questions.q19.choice[0]",
+      "exercise1_1.questions.q19.choice[1]",
+      "exercise1_1.questions.q19.choice[2]",
+    ],
     trueResponse: 1,
-    startWord: "وَڨِ ذْ",
-    meaning: "هادا سطاد",
+    startWord: "exercise1_1.startWordM",
+    meaning: "exercise1_1.questions.q19.meaning",
     sound: "anner_long",
   },
   {
     image: "train.png",
-    choice: ["ثَمَشِنْتْ", "أَرْڨَزْ", "أَلْعِذْ"],
+    choice: [
+      "exercise1_1.questions.q20.choice[0]",
+      "exercise1_1.questions.q20.choice[1]",
+      "exercise1_1.questions.q20.choice[2]",
+    ],
     trueResponse: 0,
-    startWord: "ثَڨِ تْ",
-    meaning: "هادي مشينا",
+    startWord: "exercise1_1.startWordF",
+    meaning: "exercise1_1.questions.q20.meaning",
     sound: "tamacint_long",
   },
 ];
@@ -478,7 +629,8 @@ const playSound = async (soundName: string): Promise<void> => {
 
 const handleChange = (event: any) => {
   buttonDisabled.value = false;
-  response = event.detail.value;
+  response = t(event.detail.value, {}, { locale: "dz" });
+
   if (response == "اَمْشِشْ")
     playSound("amcic").catch((err) => {
       console.error("Failed to play sound:", err);
@@ -742,14 +894,20 @@ const handleChange = (event: any) => {
 
 const checkResponse = async () => {
   const current = shuffledExercises.value[currentExercise.value];
-
   if (
     response ===
-    shuffledExercises.value[currentExercise.value]?.choice[
-    shuffledExercises.value[currentExercise.value]?.trueResponse || 0
-    ]
+    t(
+      shuffledExercises.value[currentExercise.value]?.choice[
+        shuffledExercises.value[currentExercise.value]?.trueResponse || 0
+      ],
+      {},
+      { locale: "dz" }
+    )
   ) {
-    displayedResponse.value = response;
+    displayedResponse.value =
+      shuffledExercises.value[currentExercise.value]?.choice[
+        shuffledExercises.value[currentExercise.value]?.trueResponse || 0
+      ];
     trueModalIsOpen.value = true;
     await playSuccess().catch((err) => {
       console.error("Failed to play success sound:", err);
@@ -772,14 +930,14 @@ const checkResponse = async () => {
 };
 
 const trueGoOn = () => {
+  score.value++;
   if (score.value < shuffledExercises.value.length) {
-    score.value++;
     progress.value = progress.value + 1 / shuffledExercises.value.length;
     currentExercise.value++;
   }
   trueModalCanDissmiss.value = true;
   trueModalIsOpen.value = false;
-  
+
   buttonDisabled.value = true;
 };
 

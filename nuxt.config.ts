@@ -12,21 +12,6 @@ export default defineNuxtConfig({
       apiBase: process.env.SERVER_URL || 'http://localhost:3030',
     }
   },
-/*
-  i18n: {
-    defaultLocale: 'fr',
-    strategy: 'no_prefix',
-    locales: [
-      { code: 'ar-AR', file: 'ar.json' },
-      { code: 'fr-FR',  file: 'fr.json' }
-    ],
-     detectBrowserLanguage: false,
-    skipSettingLocaleOnNavigate: true,
-    experimental: {
-      preload: false,
-      stripMessagesPayload: false
-    }
-  
-  }
-*/
+
+
 })  

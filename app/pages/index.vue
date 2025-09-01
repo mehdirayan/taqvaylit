@@ -2,36 +2,36 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>أَذْ حَفْضَغْ ثَقْبَيْلِثْ</ion-title>
+        <ion-title>{{t("title")}}</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content class="ion-padding">
+
+      <div class="flex gap-2 justify-center mb-6">
+        <ion-button
+          v-for="lang in langs"
+          :key="lang"
+          :fill="currentLocale === lang ? 'solid' : 'outline'"
+          :color="currentLocale === lang ? 'primary' : 'medium'"
+          @click="switchLang(lang)"
+        >
+          {{ lang.toUpperCase() }}
+        </ion-button>
+      </div>
       <div id="container" class="text-center">
         <div class="flex justify-center my-5">
-          
-          <svg
-            version="1.1"
-            id="svg45732"
-            width="300"
-            height="300"
-            viewBox="0 0 300 300"
-            sodipodi:docname="bijou_berber_12.svg"
-            inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+
+          <svg version="1.1" id="svg45732" width="300" height="300" viewBox="0 0 300 300"
+            sodipodi:docname="bijou_berber_12.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:svg="http://www.w3.org/2000/svg"
-          >
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+            xmlns:svg="http://www.w3.org/2000/svg">
             <defs id="defs45736" />
 
             <g inkscape:groupmode="layer" inkscape:label="Image" id="g45738">
-              <image
-                width="300"
-                height="300"
-                preserveAspectRatio="none"
-                style="image-rendering: optimizeSpeed"
+              <image width="300" height="300" preserveAspectRatio="none" style="image-rendering: optimizeSpeed"
                 xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCALUAjgDASIA
@@ -1367,35 +1367,45 @@ AMQf/O1EP/hrWVlTKzRfvV7OBurKyonj4kGSHGKIn/wo6ysqfuQPEFZ2HQ1L/KKysqZEifvW2SET
 FZWV6eEv2jk/uC3+VOfzND6io+yHj+asrKzv9Z/vN7G/6cqrsfPf61YfDh8u5DKBkqc5rKymn/6c
 Rs/WZJ4iuJBIFBAH0pNB65hu96ysqlX6Zm5HiNtWjWJbbYMZTmtNJmf94xru4PUVlZXQYvgTMs/Q
 Y1uPU7g9N1ZWVlacSn//2Q==
-"
-              />
+" />
             </g>
           </svg>
         </div>
-     
+
         <div class="my-5">
-          <ion-button router-link="/welcome" class="text-3xl">أَبْذُ</ion-button>
+          <ion-button router-link="/welcome" :class="[locale === 'ar' ? 'text-3xl' : 'text-2xl']">{{ t("start") }}</ion-button>
         </div>
-          <h1 class="text-gray-700">عبز هنا باش تبدا</h1>
-        
+        <h1 class="text-gray-700">{{ t("startMessage") }}</h1> 
+
       </div>
     </ion-content>
   </ion-page>
 </template>
 
+<script setup lang="ts">
 
+import { useI18n } from 'vue-i18n'
+const { $setLocale , $i18n } = useNuxtApp()
+const { t , locale} = useI18n()
+const langs = ['fr', 'en', 'dz']
+const currentLocale = computed(() => $i18n.global.locale.value)
+function switchLang(lang: string) {
+  $setLocale(lang)
+}
+
+</script>
 
 <style scoped>
-  ion-toolbar {
-    --background: #4e73d8;
-    --color: white;
-  
-    --min-height: 80px;
-    --padding-top: 40px;
-    --padding-bottom: 20px;
-  }
+ion-toolbar {
+  --background: #4e73d8;
+  --color: white;
 
-  ion-title {
+  --min-height: 80px;
+  --padding-top: 40px;
+  --padding-bottom: 20px;
+}
+
+ion-title {
   width: 100%;
   text-align: center;
 }

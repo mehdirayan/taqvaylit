@@ -1,0 +1,110 @@
+{
+  "______  ":"______  ",
+  "":"",
+  "title": "Ad ḥafḍaɣ taqbaylit",
+  "start": "Abdu",
+  "startMessage": "Click here to start",
+  "connectionError": "Not connected to the internet",
+  "welcome": {
+    "soonMessage": "Coming soon",
+    "1": { "title": "kra n w awalen", "traduction": "Somme words" },
+    "2": { "title": "Sel mliḥ", "traduction": "Listen well" }
+  },
+  "exercise1_1": {
+    "title": "Vocabulary",
+    "question": "Choose the word that matches the picture",
+    "ok": "Submit",
+    "questions": {
+      "q1": {
+        "choice": ["Amshish", "Eṭṭejr", "Eṭṭabla"],
+        "meaning":"This is a table"
+      },
+      "q2": {
+        "choice": ["Elkas", "Axxam", "Aɛudiw"],
+        "meaning": "This is a glass"
+      },
+      "q3": {
+        "choice": ["Adrar", "Akersi", "Amen"],
+        "meaning":  "This is a chair"
+      },
+      "q4": {
+        "choice": ["Igeni", "Lebḥar", "Afenjal"],
+        "meaning":  "This is a cup"
+      },
+      "q5": {
+        "choice": ["Tafarcit", "Abeḥri", "Abṛid"],
+        "meaning": "This is a fork"
+      },
+      "q6": {
+        "choice": ["Taɛebut", "Aserwal", "Taɣenjawt"],
+        "meaning": "This is a spoon"
+      },
+      "q7": {
+        "choice": ["Elmus", "Laḥcic", "tayaẓiṭ"],
+        "meaning":  "This is a knife"
+      },
+      "q8": {
+        "choice": ["Elɣaba", "Aqjun", "Taḍebsitt"],
+        "meaning":  "This is a plate"
+      },
+      "q9": {
+        "choice": ["taqerɛet", "Ikkeri", "Takkerust"],
+        "meaning": "This is a bottle"
+      },
+      "q10": {
+        "choice": ["Itri", "Usu", "Assebaḍ"],
+        "meaning":  "This is a bed"
+      },
+      "q11": {
+        "choice": ["Taburt", "Azniq", "Edruj"],
+        "meaning": "This is a door"
+      },
+      "q12": {
+        "choice": ["Adfel", "Agur", "Eṭṭaq"],
+        "meaning": "This is a window"
+      },
+      "q13": {
+        "choice": ["Ezzit", "Aɣrum", "Etilifun"],
+        "meaning":  "This is a telephone"
+      },
+      "q14": {
+        "choice": ["Elḥiḍ", "Adrar", "Amarci"],
+        "meaning": "This is a mountain"
+      },
+      "q15": {
+        "choice": ["Astilu", "Taddert", "Etrisiti"],
+        "meaning":  "This is a pen"
+      },
+      "q16": {
+        "choice": ["Elgez", "Azemmur", "Tawerqet"],
+        "meaning": "These are olives"
+
+      },
+      "q17": {
+        "choice": ["Esbitar", "Asqif", "Elqahwa"],
+        "meaning": "This is a hospital"
+      },
+      "q18": {
+        "choice": ["Kaskrut", "Tamurt", "Ellakul"],
+        "meaning": "This is a school"
+      },
+      "q19": {
+        "choice": ["Lifrit", "Anner", "Elmizen"],
+        "meaning":  "This is a stadium"
+      },
+      "q20": {
+        "choice": ["Tamacint", "Azger", "Elɛid"],
+        "meaning":  "This is a train"
+      }
+    },
+    "startWordF": "Taɣi t",
+    "startWordFM": "Taɣi d",
+    "startWordM": "Wagi d",
+    "successMessage":"Well done, go ahead",
+    "finalSuccessMessage1":"Congrats! You got 20/20",
+    "finalSuccessMessage2":"You learned 20 Kabyle words",
+    "continue":"Go ahead",
+    "failMessage1":"You didn't get it. Never mind",
+    "failMessage2":"You have to try from the start"
+  }
+}
