@@ -156,9 +156,9 @@
         "response": ["Taɣi", "d","Yemma"]
       },
       "p8": {
-        "choices": ["Amcic", "Iṭij", "Asemid", "Iɣuni", "d", "Assa"],
+        "choices": ["Amcic", "Iṭij", "Asemiḍ", "Iɣuni", "d", "Assa"],
         "meaning": "Today is cold",
-        "response": ["Assa","d", "Asemid"]
+        "response": ["Assa","d", "Asemiḍ"]
       },
       "p9": {
         "choices": ["Aɣrum", "Udi", "Hamlag", "Times", "w", "s"],
@@ -216,7 +216,7 @@
         "response": ["Emdel", "Taburt"]
       },
       "p20": {
-        "choices": ["Elli", "Asemid", "Eṭṭaq", "Taɣenǧawt", "Ul"],
+        "choices": ["Elli", "Asemiḍ", "Eṭṭaq", "Taɣenǧawt", "Ul"],
         "meaning": "Open the window",
         "response": ["Elli", "Eṭṭaq"]
       }
