@@ -1373,7 +1373,7 @@ Y1uPU7g9N1ZWVlacSn//2Q==
         </div>
 
         <div class="my-5">
-          <ion-button router-link="/welcome" :class="[locale === 'ar' ? 'text-3xl' : 'text-2xl']">{{ t("start") }}</ion-button>
+          <ion-button router-link="/welcome" :class="[locale === 'dz' ? 'text-3xl' : 'text-2xl']">{{ t("start") }}</ion-button>
         </div>
         <h1 class="text-gray-700">{{ t("startMessage") }}</h1> 
 

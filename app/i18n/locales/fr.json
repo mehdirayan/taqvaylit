@@ -1,5 +1,5 @@
 {
-  "______  ":"______  ",
+  "______  ": "______  ",
   "title": "Ad ḥafḍaɣ taqbaylit",
   "start": "Abdu",
   "startMessage": "Click ici pour commencer",
@@ -15,95 +15,217 @@
     "ok": "Envoyer",
     "questions": {
       "q1": {
-        "choice": ["Amcic", "Eṭṭejr", "Eṭṭabla"],
-        "meaning":"Ceci est une table"
-
+        "choices": ["Amcic", "Eṭṭejra", "Eṭṭabla"],
+        "meaning": "Ceci est une table"
       },
       "q2": {
-        "choice": ["Elkas", "Axxam", "Aɛudiw"],
+        "choices": ["Elkas", "Axxam", "Aɛudiw"],
         "meaning": "Ceci est un verre"
       },
       "q3": {
-        "choice": ["Adrar", "Akersi", "Amen"],
-        "meaning":  "Ceci est une chaise"
+        "choices": ["Adrar", "Akersi", "Amen"],
+        "meaning": "Ceci est une chaise"
       },
       "q4": {
-        "choice": ["Igeni", "Lebḥar", "Afenjal"],
-        "meaning":  "Ceci est une tasse"
+        "choices": ["Igeni", "Lebḥar", "Afenǧal"],
+        "meaning": "Ceci est une tasse"
       },
       "q5": {
-        "choice": ["Tafarcit", "Abeḥri", "Abṛid"],
+        "choices": ["Tafarciṭ", "Abeḥri", "Abṛid"],
         "meaning": "Ceci est une fourchette"
       },
       "q6": {
-        "choice": ["Taɛebut", "Aserwal", "Taɣenjawt"],
+        "choices": ["Taɛebut", "Aserwal", "Taɣenǧawt"],
         "meaning": "Ceci est une cuillère"
       },
       "q7": {
-        "choice": ["Elmus", "Laḥcic", "tayaẓiṭ"],
-        "meaning":  "Ceci est un couteau"
+        "choices": ["Elmus", "Laḥcic", "tayaẓiṭ"],
+        "meaning": "Ceci est un couteau"
       },
       "q8": {
-        "choice": ["Elɣaba", "Aqjun", "Taḍebsitt"],
-        "meaning":  "Ceci est une assiette"
+        "choices": ["Elɣaba", "Aqjun", "Taḍebsiţ"],
+        "meaning": "Ceci est une assiette"
       },
       "q9": {
-        "choice": ["taqerɛet", "Ikkeri", "Takkerust"],
+        "choices": ["taqerɛeţ", "Ikkeri", "Takkerust"],
         "meaning": "Ceci est une bouteille"
       },
       "q10": {
-        "choice": ["Itri", "Usu", "Assebaḍ"],
-        "meaning":  "Ceci est un lit"
+        "choices": ["Itri", "Usu", "Assebaḍ"],
+        "meaning": "Ceci est un lit"
       },
       "q11": {
-        "choice": ["Taburt", "Azniq", "Edruj"],
+        "choices": ["Taburṭ", "Azniq", "Edruǧ"],
         "meaning": "Ceci est une porte"
       },
       "q12": {
-        "choice": ["Adfel", "Agur", "Eṭṭaq"],
+        "choices": ["Adfel", "Agur", "Eṭṭaq"],
         "meaning": "Ceci est une fenêtre"
       },
       "q13": {
-        "choice": ["Ezzit", "Aɣrum", "Etilifun"],
-        "meaning":  "Ceci est un téléphone"
+        "choices": ["Ezzit", "Aɣrum", "Etilifun"],
+        "meaning": "Ceci est un téléphone"
       },
       "q14": {
-        "choice": ["Elḥiḍ", "Adrar", "Amarci"],
+        "choices": ["Elḥiḍ", "Adrar", "Amarci"],
         "meaning": "Ceci est une montagne"
       },
       "q15": {
-        "choice": ["Astilu", "Taddert", "Etrisiti"],
-        "meaning":  "Ceci est un stylo"
+        "choices": ["Astilu", "Taddert", "Etrisiti"],
+        "meaning": "Ceci est un stylo"
       },
       "q16": {
-        "choice": ["Elgez", "Azemmur", "Tawerqet"],
+        "choices": ["Elgez", "Azemmur", "Tawerqeţ"],
         "meaning": "Ceci sont des olives"
       },
       "q17": {
-        "choice": ["Esbitar", "Asqif", "Elqahwa"],
+        "choices": ["Esbitar", "Asqif", "Elqahwa"],
         "meaning": "Ceci est un hôpital"
       },
       "q18": {
-        "choice": ["Kaskrut", "Tamurt", "Ellakul"],
+        "choices": ["Kaskrut", "Tamurt", "Ellakul"],
         "meaning": "Ceci est une école"
       },
       "q19": {
-        "choice": ["Lifrit", "Anner", "Elmizen"],
-        "meaning":  "Ceci est un stade"
+        "choices": ["Lifrit", "Anner", "Elmizen"],
+        "meaning": "Ceci est un stade"
       },
       "q20": {
-        "choice": ["Tamacint", "Azger", "Elɛid"],
-        "meaning":  "Ceci est un train"
+        "choices": ["Tamacint", "Azger", "Elɛid"],
+        "meaning": "Ceci est un train"
       }
     },
     "startWordF": "Taɣi t",
     "startWordFM": "Taɣi d",
     "startWordM": "Wagi d",
-    "successMessage":"Super, continuez",
-    "finalSuccessMessage1":"filicitations! vous avez eu 20/20",
-    "finalSuccessMessage2":"Vous avez appris 20 mots kabyles",
-    "continue":"Continuez",
-    "failMessage1":"Vous ne l'avez pas eu. Ce n'est pas grave",
-    "failMessage2":"Vous devez recommencer depuis le début"
+    "successMessage": "Super, continuez",
+    "finalSuccessMessage1": "Filicitations! vous avez eu 20/20",
+    "finalSuccessMessage2": "Vous avez appris 20 mots kabyles",
+    "continue": "Continuez",
+    "failMessage1": "Vous ne l'avez pas eu. Ce n'est pas grave",
+    "failMessage2": "Vous devez recommencer depuis le début"
+  },
+  "exercise1_2": {
+    "title": "Écoute",
+    "question": "Choisissez les mots qui correspondent à l'audio",
+    "ok": "Envoyer",
+    "hint": "Cliquez sur les mots pour construire la phrase",
+   "propositions": {
+  "p1": {
+    "choices": ["Anwa", "Wagi", "Emmi", "Afṛux"],
+    "meaning": "Qui c'est celui là",
+    "response": ["Anwa", "Wagi"]
+  },
+  "p2": {
+    "choices": ["Axxam", "Awi", "Amen", "Sew", "d"],
+    "meaning": "Apporte l’eau",
+    "response": ["Awi", "d", "Amen"]
+  },
+  "p3": {
+    "choices": ["Taburt", "Wagi", "Adrar", "Akersi", "d"],
+    "meaning": "Ceci est une chaise",
+    "response": ["Wagi","d","Akersi"]
+  },
+  "p4": {
+    "choices": [
+      "Efkiyi",
+      "Itri",
+      "Enni",
+      "Aserwal",
+      "Eṭṭabla",
+      "d",
+      "Taɣenǧawt"
+    ],
+    "meaning": "Donne-moi cette cuillère",
+    "response": ["Efkiyi", "d","Taɣenǧawt","Enni"]
+  },
+  "p5": {
+    "choices": ["Ali", "Ul", "Amellal", "Is", "Takkerust", "d", "Azger"],
+    "meaning": "Il a le cœur blanc (Il est gentil)",
+    "response": ["Ul","is", "d", "Amellal"]
+  },
+  "p6": {
+    "choices": ["Afermaǧ", "Yuli", "Ass", "Elamba", "w", "Taxxamt"],
+    "meaning": "Le jour s’est levé",
+    "response": ["Yuli","w", "Ass"]
+  },
+  "p7": {
+    "choices": ["d", "Taɣi", "Ass", "Yemma", "Agur", "Tameṭṭut"],
+    "meaning": "Celle la c'est ma mère",
+    "response": ["Taɣi", "d","Yemma"]
+  },
+  "p8": {
+    "choices": ["Amcic", "Iṭij", "Asemid", "Iɣuni", "d", "Assa"],
+    "meaning": "Aujourd’hui il fait froid",
+    "response": ["Assa","d", "Asemid"]
+  },
+  "p9": {
+    "choices": ["Aɣrum", "Udi", "Hamlag", "Times", "w", "s"],
+    "meaning": "J’aime le pain avec du beurre",
+    "response": ["Hamlag", "Aɣrum", "s", "w","Udi"]
+  },
+  "p10": {
+    "choices": ["Aɣrum", "Tiɣerɣert", "Eṭṭaq", "Ečč"],
+    "meaning": "Mange le pain",
+    "response": ["Ečč", "Aɣrum"]
+  },
+  "p11": {
+    "choices": ["d", "Alxir", "Nana", "A", "Ɛli"],
+    "meaning": "Bonjour oncle Ali",
+    "response": ["Alxir", "A", "da","Ɛli"]
+  },
+  "p12": {
+    "choices": ["Lehna", "Asif", "d", "g", "ǧiɣkun"],
+    "meaning": "Restez en paix / Je vous laisse",
+    "response": [ "ǧiɣkun","g","Lehna"]
+  },
+  "p13": {
+    "choices": ["n", "Esmiriyi", "Elkas", "Amen", "d", "w"],
+    "meaning": "Verse-moi un verre d’eau",
+    "response": ["Esmiriyi","d", "Elkas","n","w", "Amen"]
+  },
+  "p14": {
+    "choices": ["Telifun", "Acḥal", "Aɣi", "Is", "Aɣrum", "Essuma"],
+    "meaning": "Combien coûte ce téléphone",
+    "response": ["Acḥal", "Essuma","s", "Telifun","Aɣi"]
+  },
+  "p15": {
+    "choices": ["Astilu", "Taddert", "Teliḍ", "Etrisiti", "Anda"],
+    "meaning": "Où étais-tu",
+    "response": ["Anda", "Teliḍ"]
+  },
+  "p16": {
+    "choices": ["Taɣect", "Efkiyi", "d", "Axxam", "Elqahwa", "Aɣyul"],
+    "meaning": "Donne-moi du café",
+    "response": ["Efkiyi", "d","Elqahwa"]
+  },
+  "p17": {
+    "choices": ["Asqif", "Eţmeslayeɣ", "Udi", "Esbitar", "Taqbaylit"],
+    "meaning": "Je parle kabyle",
+    "response": ["Eţmeslayeɣ", "Taqbaylit"]
+  },
+  "p18": {
+    "choices": ["LƐali", "d", "Weltma", "Wagi", "Awal"],
+    "meaning": "Ceci est une parole juste",
+    "response": ["Wagi", "d","Awal","LƐali"]
+  },
+  "p19": {
+    "choices": ["Emdel", "Azrem", "Taburt", "Ayefki"],
+    "meaning": "Ferme la porte",
+    "response": ["Emdel", "Taburt"]
+  },
+  "p20": {
+    "choices": ["Elli", "Asemid", "Eṭṭaq", "Taɣenǧawt", "Ul"],
+    "meaning": "Ouvre la fenêtre",
+    "response": ["Elli", "Eṭṭaq"]
+  }
+}
+,
+     "successMessage": "Super, continuez",
+    "finalSuccessMessage1":"Bravo ! 20/20",
+    "finalSuccessMessage2":"Tu es trop fort !",
+    "continue": "Continuez",
+    "failMessage1": "Vous ne l'avez pas eu. Ce n'est pas grave",
+    "failMessage2": "Vous devez recommencer depuis le début"
   }
 }

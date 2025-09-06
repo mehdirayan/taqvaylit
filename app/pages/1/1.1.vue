@@ -12,13 +12,13 @@
           class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center"
         >
           <div class="text-center">
-            <h1 class="text-5xl font-bold text-green-800 mb-4">
+            <h1 class="text-3xl font-bold text-green-800 mb-4">
               🎉 {{ t("exercise1_1.finalSuccessMessage1") }}🎉
             </h1>
-            <h1 class="text-5xl font-bold text-green-800 mb-4">
+            <h1 class="text-3xl font-bold text-green-800 mb-4">
               🎉{{ t("exercise1_1.finalSuccessMessage2") }}🎉
             </h1>
-            <ion-button expand="block" @click="goOn">كمل</ion-button>
+            <ion-button expand="block" @click="goOn">كمل</ion-button> 
           </div>
         </div>
       </transition>
@@ -54,7 +54,7 @@
         <ion-radio-group @ion-change="handleChange($event)">
           <div class="flex flex-row flex-wrap justify-center mt-5 gap-4">
             <div
-              v-for="item in shuffledExercises[currentExercise]?.choice"
+              v-for="item in shuffledExercises[currentExercise]?.choices"
               class=""
             >
               <ion-radio
@@ -242,10 +242,10 @@ const imgSrc = computed(() => {
 const exercise = [
   {
     image: "table.png",
-    choice: [
-      "exercise1_1.questions.q1.choice[0]",
-      "exercise1_1.questions.q1.choice[1]",
-      "exercise1_1.questions.q1.choice[2]",
+    choices: [
+      "exercise1_1.questions.q1.choices[0]",
+      "exercise1_1.questions.q1.choices[1]",
+      "exercise1_1.questions.q1.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordFM",
@@ -254,10 +254,10 @@ const exercise = [
   },
   {
     image: "verre.png",
-    choice: [
-      "exercise1_1.questions.q2.choice[0]",
-      "exercise1_1.questions.q2.choice[1]",
-      "exercise1_1.questions.q2.choice[2]",
+    choices: [
+      "exercise1_1.questions.q2.choices[0]",
+      "exercise1_1.questions.q2.choices[1]",
+      "exercise1_1.questions.q2.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordM",
@@ -267,10 +267,10 @@ const exercise = [
 
   {
     image: "chair.png",
-    choice: [
-      "exercise1_1.questions.q3.choice[0]",
-      "exercise1_1.questions.q3.choice[1]",
-      "exercise1_1.questions.q3.choice[2]",
+    choices: [
+      "exercise1_1.questions.q3.choices[0]",
+      "exercise1_1.questions.q3.choices[1]",
+      "exercise1_1.questions.q3.choices[2]",
     ],
     trueResponse: 1,
     startWord: "exercise1_1.startWordM",
@@ -279,10 +279,10 @@ const exercise = [
   },
   {
     image: "cup.png",
-    choice: [
-      "exercise1_1.questions.q4.choice[0]",
-      "exercise1_1.questions.q4.choice[1]",
-      "exercise1_1.questions.q4.choice[2]",
+    choices: [
+      "exercise1_1.questions.q4.choices[0]",
+      "exercise1_1.questions.q4.choices[1]",
+      "exercise1_1.questions.q4.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordM",
@@ -291,10 +291,10 @@ const exercise = [
   },
   {
     image: "fork.png",
-    choice: [
-      "exercise1_1.questions.q5.choice[0]",
-      "exercise1_1.questions.q5.choice[1]",
-      "exercise1_1.questions.q5.choice[2]",
+    choices: [
+      "exercise1_1.questions.q5.choices[0]",
+      "exercise1_1.questions.q5.choices[1]",
+      "exercise1_1.questions.q5.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordF",
@@ -303,10 +303,10 @@ const exercise = [
   },
   {
     image: "spoon.png",
-    choice: [
-      "exercise1_1.questions.q6.choice[0]",
-      "exercise1_1.questions.q6.choice[1]",
-      "exercise1_1.questions.q6.choice[2]",
+    choices: [
+      "exercise1_1.questions.q6.choices[0]",
+      "exercise1_1.questions.q6.choices[1]",
+      "exercise1_1.questions.q6.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordF",
@@ -315,10 +315,10 @@ const exercise = [
   },
   {
     image: "knife.png",
-    choice: [
-      "exercise1_1.questions.q7.choice[0]",
-      "exercise1_1.questions.q7.choice[1]",
-      "exercise1_1.questions.q7.choice[2]",
+    choices: [
+      "exercise1_1.questions.q7.choices[0]",
+      "exercise1_1.questions.q7.choices[1]",
+      "exercise1_1.questions.q7.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordM",
@@ -327,10 +327,10 @@ const exercise = [
   },
   {
     image: "plate.png",
-    choice: [
-      "exercise1_1.questions.q8.choice[0]",
-      "exercise1_1.questions.q8.choice[1]",
-      "exercise1_1.questions.q8.choice[2]",
+    choices: [
+      "exercise1_1.questions.q8.choices[0]",
+      "exercise1_1.questions.q8.choices[1]",
+      "exercise1_1.questions.q8.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordF",
@@ -339,10 +339,10 @@ const exercise = [
   },
   {
     image: "bottle.png",
-    choice: [
-      "exercise1_1.questions.q9.choice[0]",
-      "exercise1_1.questions.q9.choice[1]",
-      "exercise1_1.questions.q9.choice[2]",
+    choices: [
+      "exercise1_1.questions.q9.choices[0]",
+      "exercise1_1.questions.q9.choices[1]",
+      "exercise1_1.questions.q9.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordF",
@@ -351,10 +351,10 @@ const exercise = [
   },
   {
     image: "bed.png",
-    choice: [
-      "exercise1_1.questions.q10.choice[0]",
-      "exercise1_1.questions.q10.choice[1]",
-      "exercise1_1.questions.q10.choice[2]",
+    choices: [
+      "exercise1_1.questions.q10.choices[0]",
+      "exercise1_1.questions.q10.choices[1]",
+      "exercise1_1.questions.q10.choices[2]",
     ],
     trueResponse: 1,
     startWord: "exercise1_1.startWordM",
@@ -363,10 +363,10 @@ const exercise = [
   },
   {
     image: "door.png",
-    choice: [
-      "exercise1_1.questions.q11.choice[0]",
-      "exercise1_1.questions.q11.choice[1]",
-      "exercise1_1.questions.q11.choice[2]",
+    choices: [
+      "exercise1_1.questions.q11.choices[0]",
+      "exercise1_1.questions.q11.choices[1]",
+      "exercise1_1.questions.q11.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordF",
@@ -375,10 +375,10 @@ const exercise = [
   },
   {
     image: "window.png",
-    choice: [
-      "exercise1_1.questions.q12.choice[0]",
-      "exercise1_1.questions.q12.choice[1]",
-      "exercise1_1.questions.q12.choice[2]",
+    choices: [
+      "exercise1_1.questions.q12.choices[0]",
+      "exercise1_1.questions.q12.choices[1]",
+      "exercise1_1.questions.q12.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordM",
@@ -387,10 +387,10 @@ const exercise = [
   },
   {
     image: "phone.png",
-    choice: [
-      "exercise1_1.questions.q13.choice[0]",
-      "exercise1_1.questions.q13.choice[1]",
-      "exercise1_1.questions.q13.choice[2]",
+    choices: [
+      "exercise1_1.questions.q13.choices[0]",
+      "exercise1_1.questions.q13.choices[1]",
+      "exercise1_1.questions.q13.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordM",
@@ -400,10 +400,10 @@ const exercise = [
 
   {
     image: "mountain.png",
-    choice: [
-      "exercise1_1.questions.q14.choice[0]",
-      "exercise1_1.questions.q14.choice[1]",
-      "exercise1_1.questions.q14.choice[2]",
+    choices: [
+      "exercise1_1.questions.q14.choices[0]",
+      "exercise1_1.questions.q14.choices[1]",
+      "exercise1_1.questions.q14.choices[2]",
     ],
     trueResponse: 1,
     startWord: "exercise1_1.startWordM",
@@ -413,10 +413,10 @@ const exercise = [
 
   {
     image: "pen.png",
-    choice: [
-      "exercise1_1.questions.q15.choice[0]",
-      "exercise1_1.questions.q15.choice[1]",
-      "exercise1_1.questions.q15.choice[2]",
+    choices: [
+      "exercise1_1.questions.q15.choices[0]",
+      "exercise1_1.questions.q15.choices[1]",
+      "exercise1_1.questions.q15.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordM",
@@ -426,10 +426,10 @@ const exercise = [
 
   {
     image: "olive.png",
-    choice: [
-      "exercise1_1.questions.q16.choice[0]",
-      "exercise1_1.questions.q16.choice[1]",
-      "exercise1_1.questions.q16.choice[2]",
+    choices: [
+      "exercise1_1.questions.q16.choices[0]",
+      "exercise1_1.questions.q16.choices[1]",
+      "exercise1_1.questions.q16.choices[2]",
     ],
     trueResponse: 1,
     startWord: "exercise1_1.startWordM",
@@ -439,10 +439,10 @@ const exercise = [
 
   {
     image: "hospital.png",
-    choice: [
-      "exercise1_1.questions.q17.choice[0]",
-      "exercise1_1.questions.q17.choice[1]",
-      "exercise1_1.questions.q17.choice[2]",
+    choices: [
+      "exercise1_1.questions.q17.choices[0]",
+      "exercise1_1.questions.q17.choices[1]",
+      "exercise1_1.questions.q17.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordM",
@@ -452,10 +452,10 @@ const exercise = [
 
   {
     image: "school.png",
-    choice: [
-      "exercise1_1.questions.q18.choice[0]",
-      "exercise1_1.questions.q18.choice[1]",
-      "exercise1_1.questions.q18.choice[2]",
+    choices: [
+      "exercise1_1.questions.q18.choices[0]",
+      "exercise1_1.questions.q18.choices[1]",
+      "exercise1_1.questions.q18.choices[2]",
     ],
     trueResponse: 2,
     startWord: "exercise1_1.startWordM",
@@ -464,10 +464,10 @@ const exercise = [
   },
   {
     image: "stadium.png",
-    choice: [
-      "exercise1_1.questions.q19.choice[0]",
-      "exercise1_1.questions.q19.choice[1]",
-      "exercise1_1.questions.q19.choice[2]",
+    choices: [
+      "exercise1_1.questions.q19.choices[0]",
+      "exercise1_1.questions.q19.choices[1]",
+      "exercise1_1.questions.q19.choices[2]",
     ],
     trueResponse: 1,
     startWord: "exercise1_1.startWordM",
@@ -476,10 +476,10 @@ const exercise = [
   },
   {
     image: "train.png",
-    choice: [
-      "exercise1_1.questions.q20.choice[0]",
-      "exercise1_1.questions.q20.choice[1]",
-      "exercise1_1.questions.q20.choice[2]",
+    choices: [
+      "exercise1_1.questions.q20.choices[0]",
+      "exercise1_1.questions.q20.choices[1]",
+      "exercise1_1.questions.q20.choices[2]",
     ],
     trueResponse: 0,
     startWord: "exercise1_1.startWordF",
@@ -897,7 +897,7 @@ const checkResponse = async () => {
   if (
     response ===
     t(
-      shuffledExercises.value[currentExercise.value]?.choice[
+      shuffledExercises.value[currentExercise.value]?.choices[
         shuffledExercises.value[currentExercise.value]?.trueResponse || 0
       ],
       {},
@@ -905,7 +905,7 @@ const checkResponse = async () => {
     )
   ) {
     displayedResponse.value =
-      shuffledExercises.value[currentExercise.value]?.choice[
+      shuffledExercises.value[currentExercise.value]?.choices[
         shuffledExercises.value[currentExercise.value]?.trueResponse || 0
       ];
     trueModalIsOpen.value = true;

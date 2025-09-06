@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title class="text-center">Listening</ion-title>
+                <ion-title class="text-center">{{ t("exercise1_2.title") }}</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true" class="ion-padding">
@@ -10,9 +10,10 @@
                 <div v-if="showSuccessAnimation"
                     class="fixed inset-0 z-50 bg-green-200 bg-opacity-90 flex items-center justify-center">
                     <div class="text-center">
-                        <h1 class="text-5xl font-bold text-green-800 mb-4"> 🎉 مبروك عليك 20/20 🎉 </h1>
-                        <h1 class="text-5xl font-bold text-green-800 mb-4"> 🎉 بزاف فوووووووور🎉 </h1> <ion-button
-                            expand="block" @click="goOnNextStage">كمل</ion-button>
+                        <h1 class="text-5xl font-bold text-green-800 mb-4"> 🎉 {{ t("exercise1_2.finalSuccessMessage1") }}  🎉
+                        </h1>
+                        <h1 class="text-5xl font-bold text-green-800 mb-4"> 🎉 {{ t("exercise1_2.finalSuccessMessage2") }} 🎉 </h1>
+                        <ion-button expand="block" @click="goOnNextStage">{{ t("exercise1_2.continue") }}</ion-button>
                     </div>
                 </div>
             </transition>
@@ -23,7 +24,7 @@
                 ⚠️ {{ t("connectionError") }}
             </div>
             <div class="text-center text-gray-700">
-                <h1>"اسمع ؤ خير الكلمات"</h1>
+                <h1>{{ t("exercise1_2.question") }}</h1>
             </div>
             <div class="flex justify-center pt-10">
                 <ion-button fill="solid" :disabled="isPlaying || !isOnline" @click="playSound()">
@@ -31,24 +32,29 @@
                 </ion-button>
             </div>
             <div class="h-10 w-8/12 pt-20 mx-auto border-b border-gray-900 " v-if="response.length === 0">
-                <h1 class="text-center text-gray-400">عبّز على الكلمات باش تبني الجملة</h1>
+                <h1 class="text-center text-gray-400">{{ t("exercise1_2.hint") }}</h1>
 
 
             </div>
-            <div class="flex flex-row-reverse justify-center pt-8">
+            <div class="flex justify-center pt-8" :class="[
+                locale === 'dz' ? 'flex-row-reverse' : 'text-2xl flex-row font-semibold ',
+            ]">
                 <div v-for="word in response">
-                    <div class=" border-b border-gray-900 text-3xl 
-                    font-bold text-center m-2 pt-10" @click="removeWord(word)">
+                    <div class=" border-b border-gray-900 
+                    font-bold text-center m-2 pt-10" :class="[
+                        locale === 'dz' ? 'text-4xl' : 'text-2xl font-semibold ',
+                    ]" @click="removeWord(word)">
                         {{ word }}
                     </div>
-
                 </div>
             </div>
 
             <div class="flex flex-row flex-wrap justify-center pt-20">
-                <div v-for="word in shuffledExercises[currentExercise]?.propositions">
-                    <div class="border border-gray-300 text-3xl font-bold text-center
-                     m-2 p-2 shadow-lg rounded-lg m-2 p-2 " @click="move(word)">
+                <div v-for="word in getPropositions(shuffledExercises[currentExercise]?.propositions)">
+                    <div class="border border-gray-300 font-bold text-center
+                     m-2 p-2 shadow-lg rounded-lg" :class="[
+                        locale === 'dz' ? 'text-4xl' : 'text-2xl font-semibold',
+                    ]" @click="move(word)">
                         {{ word }}
                     </div>
 
@@ -57,8 +63,8 @@
 
 
             <div class=" m-5 pb-16">
-                <ion-button expand="block" :disabled="buttonDisabled || !isOnline"
-                    @click="checkResponse">ابعت</ion-button>
+                <ion-button expand="block" :disabled="buttonDisabled || !isOnline" @click="checkResponse">{{
+                    t("exercise1_2.ok") }}</ion-button>
             </div>
             <ion-modal :initial-breakpoint="1" :breakpoints="[0, 1]" :can-dismiss="falseModalCanDissmiss"
                 :isOpen="falseModalIsOpen" @didDismiss="
@@ -66,12 +72,15 @@
                 falseModalCanDissmiss = false;
                 ">
                 <div class="bg-yellow-500">
-                    <div class="flex flex-col justify-end mx-4 my-10 text-red-600">
-                        <h1 class="text-right">ما جبتهاش. ماعليش</h1>
-                        <h1 class="text-right">ما ديكوراجيش. عاود</h1>
+                    <div class="flex flex-col justify-end mx-4 my-10 text-red-600" :class="[
+                        locale === 'dz' ? 'text-right' : 'text-left',
+
+                    ]">
+                        <h1>{{ t("exercise1_2.failMessage1") }}</h1>
+                        <h1>{{ t("exercise1_2.failMessage2") }}</h1>
                     </div>
                     <div class="my-8 mx-5 pb-16">
-                        <ion-button expand="block" @click="falseGoOn">كمل</ion-button>
+                        <ion-button expand="block" @click="falseGoOn">{{ t("exercise1_2.continue") }}</ion-button>
                     </div>
                 </div>
             </ion-modal>
@@ -82,18 +91,25 @@
                 ">
                 <div class="bg-lime-300">
                     <div class="flex flex-col mx-4 my-10 text-green-600">
-                        <h1 class="text-center">مليحا كمل هاڨدا</h1>
+                        <h1 class="text-center">{{ t("exercise1_2.successMessage") }} </h1>
                         <div>
-                          <h1 class="text-right text-red-600">
-                            {{ shuffledExercises[currentExercise]?.sentence.join(" ") }}
-                          </h1>  
+                            <h1 :class="[
+                                locale === 'dz' ? 'text-right' : 'text-left',
+                                'text-red-600',
+                            ]">
+                                {{ tm(shuffledExercises[currentExercise]?.sentence).join(" ") }}
+                            </h1>
                         </div>
-                        <h1 class="text-right text-red-400">
-                            {{ shuffledExercises[currentExercise]?.meaning }}
+                        <h1 :class="[
+                            locale === 'dz' ? 'text-right' : 'text-left',
+                            'text-red-400',
+                        ]">
+                            {{ t(shuffledExercises[currentExercise]?.meaning) }}
                         </h1>
                     </div>
                     <div class="my-8 mx-5 pb-16">
-                        <ion-button :disabled="isPlaying || !isOnline" expand="block" @click="trueGoOn">كمل</ion-button>
+                        <ion-button :disabled="isPlaying || !isOnline" expand="block" @click="trueGoOn">{{
+                            t("exercise1_2.continue") }}</ion-button>
                     </div>
                 </div>
             </ion-modal>
@@ -111,21 +127,35 @@ import { Network } from "@capacitor/network";
 import ConfettiGenerator from "confetti-js";
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, tm, locale } = useI18n()
 
+const getPropositions = (key) => {
 
+    return tm(key) || []   // tm returns the raw array/object from messages
+}
 
 //----------- confetiei --------------
 
 const showSuccessAnimation = ref(false);
 
-watch(showSuccessAnimation, () => {
-    if (showSuccessAnimation.value) {
+let confetti = null;
+
+watch(showSuccessAnimation, (newVal) => {
+    if (newVal) {
         var confettiSettings = { target: 'my-canvas' };
-        var confetti = new ConfettiGenerator(confettiSettings);
+         confetti = new ConfettiGenerator(confettiSettings);
         confetti.render();
         // Launch confetti when modal opens
 
+    }
+    else {
+        // Stop immediately when modal closes
+        if (confetti) {
+            confetti.clear();
+            const canvas = document.getElementById("my-canvas");
+            if (canvas) canvas.style.display = "none"; // hide instead of remove
+            confetti = null;
+        }
     }
 });
 
@@ -166,101 +196,128 @@ const assetPathAudio = `https://www.barakaelectronics.com/public/1/1.2/audio`;
 
 const exercises = [
     {
-        sentence: ["أَنْوَ", "وَڨِ"],
+        sentence: "exercise1_2.propositions.p1.response",
         sound: "1.2.1",
-        meaning: "شكون هادا",
-        propositions: ["أَنْوَ", "وَڨِ", "أَمِّ", "أَفْرُخْ"],
+        meaning: "exercise1_2.propositions.p1.meaning",
+        propositions: "exercise1_2.propositions.p1.choices",
     },
     {
-        sentence: ["أَوِ", "دْ", "أَمَنْ"],
+        sentence: "exercise1_2.propositions.p2.response",
         sound: "1.2.2",
-        meaning: "جيب الماء",
-        propositions: ["أَخَّمْ", "أَوِ", "أَمَنْ", "سَوْ", "دْ"],
+        meaning: "exercise1_2.propositions.p2.meaning",
+        propositions: "exercise1_2.propositions.p2.choices",
     },
-    {
-        sentence: ["وَڨِ", "ذْ", "أَكَرْسِ"],
+      {
+        sentence: "exercise1_2.propositions.p3.response",
         sound: "1.2.3",
-        meaning: "هادا كرسي",
-        propositions: ["ثَبُرْثْ", "وَڨِ", "أَذْرَرْ", "أَكَرْسِ", "ذْ"],
+        meaning: "exercise1_2.propositions.p3.meaning",
+        propositions: "exercise1_2.propositions.p3.choices",
     },
     {
-        sentence: ["أَفْكِيِ", "دْ", "ثَغَنْجَوْثْ", "نِّ"],
+        sentence: "exercise1_2.propositions.p4.response",
         sound: "1.2.4",
-        meaning: "اعطيني هاديك لمغرفا",
-        propositions: ["أَفْكِيِ", "إِثْرِ", "نِّ", "أَسَرْوَلْ", "أَطَّبْلَ", "دْ", "ثَغَنْجَوْثْ",],
+        meaning: "exercise1_2.propositions.p4.meaning",
+        propositions: "exercise1_2.propositions.p4.choices",
     },
     {
-        sentence: ["أُلِسْ", "ذْ", "أَمْلَلْ"],
+        sentence: "exercise1_2.propositions.p5.response",
         sound: "1.2.5",
-        meaning: "قلبو بيظ",
-        propositions: ["أَلِ", "أُلِسْ", "أَمْلَلْ", "ثَكَرُسْثْ", "أَطَّبْلَ", "ذْ", "أَزْڨَرْ"],
+        meaning: "exercise1_2.propositions.p5.meaning",
+        propositions: "exercise1_2.propositions.p5.choices",
     },
-
     {
-        sentence: ["يُلِ", "وْ", "أَسْ"],
+        sentence: "exercise1_2.propositions.p6.response",
         sound: "1.2.6",
-        meaning: "طلع النهار",
-        propositions: ["أَفَرْمَجْ", "يُلِ", "أَسْ", "أَلَمْبَ", "وْ", "ثَخَمْتْ"],
+        meaning: "exercise1_2.propositions.p6.meaning",
+        propositions: "exercise1_2.propositions.p6.choices",
     },
-
     {
-        sentence: ["ثَڨِ", "ذْ", "يِمَ"],
+        sentence: "exercise1_2.propositions.p7.response",
         sound: "1.2.7",
-        meaning: "هادي يما",
-        propositions: ["ذْ", "ثَڨِ", "أَسْ", "يِمَ", "أَڨُرْ", "ثَمَطُثْ"],
+        meaning: "exercise1_2.propositions.p7.meaning",
+        propositions: "exercise1_2.propositions.p7.choices",
     },
-
     {
-        sentence: ["أَسَّ", "ذْ", "أَسُمِضْ"],
+        sentence: "exercise1_2.propositions.p8.response",
         sound: "1.2.8",
-        meaning: "اليوم البرد",
-        propositions: ["أَمْشِشْ", "إِطِجْ", "أَسُمِضْ", "إِڨُنِ", "ذْ", "أَسَّ"],
+        meaning: "exercise1_2.propositions.p8.meaning",
+        propositions: "exercise1_2.propositions.p8.choices",
     },
-
     {
-        sentence: ["حَمْلَغْ", "أَغْرُمْ", "سْ", "وْ", "أُذِ"],
+        sentence: "exercise1_2.propositions.p9.response",
         sound: "1.2.9",
-        meaning: "نحب الخبز بزبدا",
-        propositions: ["أَغْرُمْ", "أُذِ", "حَمْلَغْ", "ثِمَسْ", "وْ", "سْ"],
+        meaning: "exercise1_2.propositions.p9.meaning",
+        propositions: "exercise1_2.propositions.p9.choices",
     },
-
     {
-        sentence: ["أَشّْ", "أَغْرُمْ"],
+        sentence: "exercise1_2.propositions.p10.response",
         sound: "1.2.10",
-        meaning: "كول الخبز",
-        propositions: ["أَغْرُمْ", "ثِغَرْغَرْثْ", "أَطَّقْ", "أَشّْ",],
+        meaning: "exercise1_2.propositions.p10.meaning",
+        propositions: "exercise1_2.propositions.p10.choices",
     },
-
-      {
-        sentence: ["أَلْخِرْ","أَ","دَّ", "عْلِ"],
-        sound: "1.2.11",
-        meaning: "صباح الخير دا (دادا) عليي",
-        propositions: ["دَّ", "أَلْخِرْ", "نَنَ","أَ", "عْلِ",],
-    },
-
     {
-        sentence: ["جِغْكُنْ", "ذَڨْ", "لَهْنَ"],
+        sentence: "exercise1_2.propositions.p11.response",
+        sound: "1.2.11",
+        meaning: "exercise1_2.propositions.p11.meaning",
+        propositions: "exercise1_2.propositions.p11.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p12.response",
         sound: "1.2.12",
-        meaning: "تبقاو علي خير(خليتكم فلهنا)",
-        propositions: ["لَهْنَ", "أَسِفْ", "ذْ", "ذَڨْ", "جِغْكُنْ"],
+        meaning: "exercise1_2.propositions.p12.meaning",
+        propositions: "exercise1_2.propositions.p12.choices",
     },
-      {
-        sentence: ["أَسْمِرِيِ", "دْ", "أَلْكَسْ","نْ","وَ","أَمَنْ"],
+    {
+        sentence: "exercise1_2.propositions.p13.response",
         sound: "1.2.13",
-        meaning: "عمر لي كاس ما",
-        propositions: ["نْ", "أَسْمِرِيِ", "أَلْكَسْ", "أَمَنْ", "دْ","وَ"],
+        meaning: "exercise1_2.propositions.p13.meaning",
+        propositions: "exercise1_2.propositions.p13.choices",
     },
-       {
-        sentence: ["أَشْحَلْ", "أَسُّمَسْ", "تِلِفُنْ","أَڨِ"],
+    {
+        sentence: "exercise1_2.propositions.p14.response",
         sound: "1.2.14",
-        meaning: "اشحال سومتو، هاد التيليفون",
-        propositions: ["تِلِفُنْ", "أَشْحَلْ", "أَڨِ", "أَغْرُمْ", "أَسُّمَسْ"],
+        meaning: "exercise1_2.propositions.p14.meaning",
+        propositions: "exercise1_2.propositions.p14.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p15.response",
+        sound: "1.2.15",
+        meaning: "exercise1_2.propositions.p15.meaning",
+        propositions: "exercise1_2.propositions.p15.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p16.response",
+        sound: "1.2.16",
+        meaning: "exercise1_2.propositions.p16.meaning",
+        propositions: "exercise1_2.propositions.p16.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p17.response",
+        sound: "1.2.17",
+        meaning: "exercise1_2.propositions.p17.meaning",
+        propositions: "exercise1_2.propositions.p17.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p18.response",
+        sound: "1.2.18",
+        meaning: "exercise1_2.propositions.p18.meaning",
+        propositions: "exercise1_2.propositions.p18.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p19.response",
+        sound: "1.2.19",
+        meaning: "exercise1_2.propositions.p19.meaning",
+        propositions: "exercise1_2.propositions.p19.choices",
+    },
+    {
+        sentence: "exercise1_2.propositions.p20.response",
+        sound: "1.2.20",
+        meaning: "exercise1_2.propositions.p20.meaning",
+        propositions: "exercise1_2.propositions.p20.choices",
     },
 
+];
 
-
-
-]
 
 
 
@@ -278,7 +335,7 @@ const shuffledExercises = ref(shuffleArray(exercises));
 // On mounted, check initial status
 onMounted(async () => {
     startNewGame();
-    
+
     const status = await Network.getStatus();
     isOnline.value = status.connected;
 
@@ -295,12 +352,13 @@ onBeforeUnmount(() => {
 
 
 const trueGoOn = () => {
+    score.value++;
     if (score.value < shuffledExercises.value.length) {
-        score.value++;
+
         progress.value = progress.value + 1 / shuffledExercises.value.length;
         currentExercise.value++;
     }
-    trueModalCanDissmiss.value = true;
+    trueModalCanDissmiss.value = true;    
     trueModalIsOpen.value = false;
 
     buttonDisabled.value = true;
@@ -345,14 +403,14 @@ const checkResponse = async () => {
 
     if (compareArrays(response.value, shuffledExercises.value[currentExercise.value]?.sentence)) {
         trueModalIsOpen.value = true;
-       
+
         await playSuccess().catch((err) => {
             console.error("Failed to play success sound:", err);
             isPlaying.value = false;
         });
     } else {
         falseModalIsOpen.value = true;
-       
+
         playFail().catch((err) => {
             console.error("Failed to play fail sound:", err);
             isPlaying.value = false;
@@ -363,8 +421,11 @@ const checkResponse = async () => {
 
 }
 
-const compareArrays = (arr1: string[], arr2: string[]) => {
-
+const compareArrays = (arr1: string[], arr2: string) => {
+    console.log(arr1)
+    console.log(arr2)
+    console.log(tm(arr2))
+    arr2 = tm(arr2)
     if (arr1.length !== arr2.length) return false;
     for (let i = 0; i < arr1.length; i++) {
         if (arr1[i] !== arr2[i]) return false;

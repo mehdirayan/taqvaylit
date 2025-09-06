@@ -1,6 +1,6 @@
 {
-  "______  ":"______  ",
-  "":"",
+  "______  ": "______  ",
+  "": "",
   "title": "Ad ḥafḍaɣ taqbaylit",
   "start": "Abdu",
   "startMessage": "Click here to start",
@@ -16,95 +16,217 @@
     "ok": "Submit",
     "questions": {
       "q1": {
-        "choice": ["Amshish", "Eṭṭejr", "Eṭṭabla"],
-        "meaning":"This is a table"
+        "choices": ["Amshish", "Eṭṭejra", "Eṭṭabla"],
+        "meaning": "This is a table"
       },
       "q2": {
-        "choice": ["Elkas", "Axxam", "Aɛudiw"],
+        "choices": ["Elkas", "Axxam", "Aɛudiw"],
         "meaning": "This is a glass"
       },
       "q3": {
-        "choice": ["Adrar", "Akersi", "Amen"],
-        "meaning":  "This is a chair"
+        "choices": ["Adrar", "Akersi", "Amen"],
+        "meaning": "This is a chair"
       },
       "q4": {
-        "choice": ["Igeni", "Lebḥar", "Afenjal"],
-        "meaning":  "This is a cup"
+        "choices": ["Igeni", "Lebḥar", "Afenǧal"],
+        "meaning": "This is a cup"
       },
       "q5": {
-        "choice": ["Tafarcit", "Abeḥri", "Abṛid"],
+        "choices": ["Tafarciṭ", "Abeḥri", "Abṛid"],
         "meaning": "This is a fork"
       },
       "q6": {
-        "choice": ["Taɛebut", "Aserwal", "Taɣenjawt"],
+        "choices": ["Taɛebuṭ", "Aserwal", "Taɣenǧawt"],
         "meaning": "This is a spoon"
       },
       "q7": {
-        "choice": ["Elmus", "Laḥcic", "tayaẓiṭ"],
-        "meaning":  "This is a knife"
+        "choices": ["Elmus", "Laḥcic", "tayaẓiṭ"],
+        "meaning": "This is a knife"
       },
       "q8": {
-        "choice": ["Elɣaba", "Aqjun", "Taḍebsitt"],
-        "meaning":  "This is a plate"
+        "choices": ["Elɣaba", "Aqjun", "Taḍebsiţ"],
+        "meaning": "This is a plate"
       },
       "q9": {
-        "choice": ["taqerɛet", "Ikkeri", "Takkerust"],
+        "choices": ["taqerɛeţ", "Ikkeri", "Takkerust"],
         "meaning": "This is a bottle"
       },
       "q10": {
-        "choice": ["Itri", "Usu", "Assebaḍ"],
-        "meaning":  "This is a bed"
+        "choices": ["Itri", "Usu", "Assebaḍ"],
+        "meaning": "This is a bed"
       },
       "q11": {
-        "choice": ["Taburt", "Azniq", "Edruj"],
+        "choices": ["Taburt", "Azniq", "Edruǧ"],
         "meaning": "This is a door"
       },
       "q12": {
-        "choice": ["Adfel", "Agur", "Eṭṭaq"],
+        "choices": ["Adfel", "Agur", "Eṭṭaq"],
         "meaning": "This is a window"
       },
       "q13": {
-        "choice": ["Ezzit", "Aɣrum", "Etilifun"],
-        "meaning":  "This is a telephone"
+        "choices": ["Ezzit", "Aɣrum", "Etilifun"],
+        "meaning": "This is a telephone"
       },
       "q14": {
-        "choice": ["Elḥiḍ", "Adrar", "Amarci"],
+        "choices": ["Elḥiḍ", "Adrar", "Amarci"],
         "meaning": "This is a mountain"
       },
       "q15": {
-        "choice": ["Astilu", "Taddert", "Etrisiti"],
-        "meaning":  "This is a pen"
+        "choices": ["Astilu", "Taddert", "Etrisiti"],
+        "meaning": "This is a pen"
       },
       "q16": {
-        "choice": ["Elgez", "Azemmur", "Tawerqet"],
+        "choices": ["Elgez", "Azemmur", "Tawerqeţ"],
         "meaning": "These are olives"
-
       },
       "q17": {
-        "choice": ["Esbitar", "Asqif", "Elqahwa"],
+        "choices": ["Esbitar", "Asqif", "Elqahwa"],
         "meaning": "This is a hospital"
       },
       "q18": {
-        "choice": ["Kaskrut", "Tamurt", "Ellakul"],
+        "choices": ["Kaskrut", "Tamurt", "Ellakul"],
         "meaning": "This is a school"
       },
       "q19": {
-        "choice": ["Lifrit", "Anner", "Elmizen"],
-        "meaning":  "This is a stadium"
+        "choices": ["Lifrit", "Anner", "Elmizen"],
+        "meaning": "This is a stadium"
       },
       "q20": {
-        "choice": ["Tamacint", "Azger", "Elɛid"],
-        "meaning":  "This is a train"
+        "choices": ["Tamacint", "Azger", "Elɛid"],
+        "meaning": "This is a train"
       }
     },
     "startWordF": "Taɣi t",
     "startWordFM": "Taɣi d",
     "startWordM": "Wagi d",
-    "successMessage":"Well done, go ahead",
-    "finalSuccessMessage1":"Congrats! You got 20/20",
-    "finalSuccessMessage2":"You learned 20 Kabyle words",
-    "continue":"Go ahead",
-    "failMessage1":"You didn't get it. Never mind",
-    "failMessage2":"You have to try from the start"
+    "successMessage": "Well done, go ahead",
+    "finalSuccessMessage1": "Congrats! You got 20/20",
+    "finalSuccessMessage2": "You learned 20 Kabyle words",
+    "continue": "Go ahead",
+    "failMessage1": "You didn't get it. Never mind",
+    "failMessage2": "You have to try from the start"
+  },
+  "exercise1_2": {
+    "title": "Listening",
+    "question": "Choose the words that matche the audio",
+    "ok": "Submit",
+    "hint": "Click on the words to build the sentence",
+    "propositions": {
+      "p1": {
+        "choices": ["Anwa", "Wagi", "Emmi", "Afṛux"],
+        "meaning": "Who is this",
+        "response": ["Anwa", "Wagi"]
+      },
+      "p2": {
+        "choices": ["Axxam", "Awi", "Amen", "Sew", "d"],
+        "meaning": "Bring the water",
+        "response": ["Awi", "d", "Amen"]
+      },
+      "p3": {
+        "choices": ["Taburt", "Wagi", "Adrar", "Akersi", "d"],
+        "meaning": "This is a chair",
+        "response": ["Wagi","d","Akersi"]
+      },
+      "p4": {
+        "choices": [
+          "Efkiyi",
+          "Itri",
+          "Enni",
+          "Aserwal",
+          "Eṭṭabla",
+          "d",
+          "Taɣenǧawt"
+        ],
+        "meaning": "Give me that spoon",
+        "response": ["Efkiyi", "d","Taɣenǧawt","Enni"]
+      },
+      "p5": {
+        "choices": ["Ali", "Ul", "Amellal", "is", "Takkerust", "d", "Azger"],
+        "meaning": "His heart is white (He is kind)",
+        "response": ["Ul","is", "d", "Amellal"]
+      },
+      "p6": {
+        "choices": ["Afermaǧ", "Yuli", "Ass", "Elamba", "w", "Taxxamt"],
+        "meaning": "The day has risen",
+        "response": ["Yuli","w", "Ass"]
+      },
+      "p7": {
+        "choices": ["d", "Taɣi", "Ass", "Yemma", "Agur", "Tameṭṭut"],
+        "meaning": "This is my mother",
+        "response": ["Taɣi", "d","Yemma"]
+      },
+      "p8": {
+        "choices": ["Amcic", "Iṭij", "Asemid", "Iɣuni", "d", "Assa"],
+        "meaning": "Today is cold",
+        "response": ["Assa","d", "Asemid"]
+      },
+      "p9": {
+        "choices": ["Aɣrum", "Udi", "Hamlag", "Times", "w", "s"],
+        "meaning": "I like bread with butter",
+        "response": ["Hamlag", "Aɣrum", "s", "w","Udi"]
+      },
+      "p10": {
+        "choices": ["Aɣrum", "Tiɣerɣert", "Eṭṭaq", "Ečč"],
+        "meaning": "Eat the bread",
+        "response": ["Ečč", "Aɣrum"]
+      },
+      "p11": {
+        "choices": ["da", "Alxir", "Nana", "A", "Ɛli"],
+        "meaning": "Good morning Uncle Ali",
+        "response": ["Alxir", "A", "da","Ɛli"]
+      },
+      "p12": {
+        "choices": ["Lehna", "Asif", "d", "g", "ǧiɣkun"],
+        "meaning": "Stay safe / I leave you in peace",
+        "response": [ "ǧiɣkun","g","Lehna"]
+      },
+      "p13": {
+        "choices": ["n", "Esmiriyi", "Elkas", "Amen", "d", "w"],
+        "meaning": "Fill my glass with water",
+        "response": ["Esmiriyi","d", "Elkas","n","w", "Amen"]
+      },
+      "p14": {
+        "choices": ["Telifun", "Acḥal", "Aɣi", "s", "Aɣrum", "Essuma"],
+        "meaning": "How much does this phone cost",
+        "response": ["Acḥal", "Essuma","s", "Telifun","Aɣi"]
+      },
+      "p15": {
+        "choices": ["Astilu", "Taddert", "Teliḍ", "Etrisiti", "Anda"],
+        "meaning": "Where were you",
+        "response": ["Anda", "Teliḍ"]
+      },
+      "p16": {
+        "choices": ["Taɣect", "Efkiyi", "d", "Axxam", "Elqahwa", "Aɣyul"],
+        "meaning": "Give me coffee",
+        "response": ["Efkiyi", "d","Elqahwa"]
+      },
+      "p17": {
+        "choices": ["Asqif", "Eţmeslayeɣ", "Udi", "Esbitar", "Taqbaylit"],
+        "meaning": "I speak Kabyle",
+        "response": ["Eţmeslayeɣ", "Taqbaylit"]
+      },
+      "p18": {
+        "choices": ["LƐali", "d", "Weltma", "Wagi", "Awal"],
+        "meaning": "This is correct speech",
+        "response": ["Wagi", "d","Awal","LƐali"]
+      },
+      "p19": {
+        "choices": ["Emdel", "Azrem", "Taburt", "Ayefki"],
+        "meaning": "Close the door",
+        "response": ["Emdel", "Taburt"]
+      },
+      "p20": {
+        "choices": ["Elli", "Asemid", "Eṭṭaq", "Taɣenǧawt", "Ul"],
+        "meaning": "Open the window",
+        "response": ["Elli", "Eṭṭaq"]
+      }
+    },
+
+    "successMessage": "Well done, go ahead",
+    "finalSuccessMessage1": "Bravo! 20/20",
+    "finalSuccessMessage2": "You’re awesome!",
+    "continue": "Go ahead",
+    "failMessage1": "You didn't get it. Never mind",
+    "failMessage2": "You have to try from the start"
   }
 }
